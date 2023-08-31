@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <title>Generate Data</title>
+</head>
+
+<body>
+
+  {% include "nav.html" %}
+
+  <!-- alert -->
+  <div class="alert alert-danger mb-0 text-center fw-bold fs-3" role="alert" id="alert_msg">
+    Welcome to World of Automation.
+  </div>
+  <!-- carousel -->
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src={%static 'images/1.jpg' %} class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src={%static 'images/2.jpg' %} class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src={%static 'images/3.jpg' %} class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- generate data form  -->
+  <div class="container my-3">
+    <form method="post" action="/generate_data_form" id="main_form">
+      {%csrf_token%}
+      <div class="mb-3">
+        <label for="login_username" class="form-label fw-bold">Github Username</label>
+        <input type="text" class="form-control" id="login_username" aria-describedby="emailHelp"
+          placeholder="Enter your Username" name="Github" required>
+      </div>
+      <div class="mb-3">
+        <label for="login_password" class="form-label fw-bold">LinkedIn Username</label>
+        <input type="text" class="form-control" id="login_password" placeholder="Enter your Username" name="LinkedIn"
+          required>
+      </div>
+    </form>
+    <p class="text-center"><button class="btn btn-danger" onclick="Submit_form()" id="submit_btn">
+      <span id="Submit_text" id = "Submit_text">Submit</span> 
+
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border text-info" role="status"  id="loader" style="display: none;">
+          <span class="visually-hidden" id="loader">Loading...</span>
+        </div>
+      </div>
+    </button>
+    </p>
+  </div>
+  <!-- footer -->
+  {% include "footer.html" %}
+  <script>
+    function Submit_form() {
+      document.getElementById("alert_msg").textContent = "Wait for Magic to Occur."
+      document.getElementById("loader").style.display = "block";
+      document.getElementById("Submit_text").style.display = "none";
+      document.getElementById("submit_btn").disabled = true;
+
+      let git = document.getElementById("login_username").value;
+      let linked = document.getElementById("login_password").value;
+      if (git == "" || linked == "") {
+        confirm("Username Can Not Be Empty");
+        document.getElementById("alert_msg").textContent = "Username Can not be Empty."
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("Submit_text").style.display = "block";
+        document.getElementById("submit_btn").disabled = false;
+        return;
+      }
+
+      check_linkedin_git();
+    }
+
+
+    async function check_linkedin_git() {
+
+      let submit_flag = 1;
+      let git = document.getElementById("login_username").value;
+      let linked = document.getElementById("login_password").value;
+      const options = {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'X-RapidAPI-Key': 'a1a4e716d1mshc04a15171e44989p16376djsned4d2fd0a2e8',
+          'X-RapidAPI-Host': 'linkedin-profiles-and-company-data.p.rapidapi.com'
+        },
+        body: `{"profile_id":"${linked}","profile_type":"personal","contact_info":false,"recommendations":false,"related_profiles":false}`
+      };
+      console.log("inside linked in fun")
+      await fetch('https://linkedin-profiles-and-company-data.p.rapidapi.com/profile-details', options)
+        .then(response => response.json())
+        .then(response => {
+          console.log(response)
+          if (response["detail"] == "Profile data cannot be retrieved.") {
+            confirm("Invalid LinkedIn Username");
+            submit_flag = 0;
+          }
+        })
+        .catch(err => console.error(err));
+
+
+      // check github 
+      apistring = `https://api.github.com/users/${git}/repos`
+      await fetch(apistring)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message == "Not Found") {
+            confirm("Invalid Github Username");
+            submit_flag = 0;
+          }
+        }
+        );
+            
+      if (submit_flag == 1) {
+        document.getElementById("main_form").submit();
+        // confirm("submit");
+      }
+      document.getElementById("alert_msg").textContent = "Enter Correct Username, Wrong Username can lead to Black Magic.";
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("Submit_text").style.display = "block";
+      document.getElementById("submit_btn").disabled = false;
+    }
+
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

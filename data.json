@@ -1,0 +1,81 @@
+{
+    "success": 1,
+    "Name": "Akshay Singh",
+    "Summary": "Computer Science enthusiast with some Web and Android Development background, and I \ud83d\udc9e\ufe0f to code.",
+    "skills": {
+        "language": [
+            "C (Programming Language)",
+            "C++",
+            "Cascading Style Sheets (CSS)",
+            "HTML",
+            "HTML5",
+            "Java",
+            "JavaScript",
+            "Kotlin"
+        ],
+        "library_and_framework": [
+            "Django",
+            "React.js"
+        ],
+        "other": [
+            "Adobe Photoshop",
+            "Microsoft Office"
+        ]
+    },
+    "Education": [
+        {
+            "Degree": "Bachelor of Technology - BTech(2nd year) , Computer Science",
+            "College": "Dr. A.P.J. Abdul Kalam Technical University (2020 - 2024)"
+        },
+        {
+            "Degree": "Senior Secondary (XII), Mathematics",
+            "College": "Elpis Global School (2018 - 2019)"
+        },
+        {
+            "Degree": "Secondary (X)",
+            "College": "Elpis Global School (2016 - 2017)"
+        }
+    ],
+    "Experience": [
+        {
+            "title": "Software Developer",
+            "company": "REACH Technologies",
+            "start": "8/2022",
+            "end": "Present"
+        },
+        {
+            "title": "Intern",
+            "company": "LetsGrowMore",
+            "start": "9/2021",
+            "end": "9/2021"
+        }
+    ],
+    "Acquirements": [],
+    "position_of_responsibility": [],
+    "Projects": [
+        {
+            "name": "E_library_using_django",
+            "description": "It is a fully responsive, fullend website made using Django that has authentication system. Only logined user can upload books and read premium books."
+        },
+        {
+            "name": "Hosting_E_library_Django_Bootstrap",
+            "description": "This project is made using HTML, Python."
+        },
+        {
+            "name": "Notepad_Python_GUI",
+            "description": "This project is made using Python."
+        },
+        {
+            "name": "Bouncing_Ball_GUI_Using_C",
+            "description": "This project is made using C."
+        },
+        {
+            "name": "Insta_Profile_Downloader_Python_GUI",
+            "description": "This project is made using Python."
+        },
+        {
+            "name": "Invoice_system",
+            "description": "This project is made using HTML, Python."
+        }
+    ]
+}

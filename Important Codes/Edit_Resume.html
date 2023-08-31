@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div id="name">
+            <div class="form-group">
+                <label for="Name" class="form-label h5">Name</label>
+                <input type="text" class="form-control mb-3" id="Name">
+            </div>
+            <div class="form-group">
+                <label for="Summary" class="form-label h5">Description</label>
+                <input type="text" class="form-control mb-3" id="Summary">
+            </div>
+        </div>
+        <div id="Education_main_box">
+            <h2 class="alert alert-danger  d-flex justify-content-center fw-bold" role="alert">Education</h2>
+            <div id="Education">
+
+            </div>
+            <div class="d-grid">
+                <button type="button" type="button" class="btn btn-secondary mb-3 " onclick="add_Education_input()"
+                    style="background-color: #cff4fc; color: black; border: none; font-weight: 600;">Add
+                    Education</button>
+            </div>
+        </div>
+        <div id="Skills_main_box">
+            <h2 class="alert alert-danger d-flex justify-content-center fw-bold" role="alert">Skills</h2>
+            <div id="Skills">
+
+            </div>
+        </div>
+        <!-- position_of_responsibility -->
+        <div id="position_of_responsibility_main_box">
+            <h2 class="alert alert-danger  d-flex justify-content-center fw-bold" role="alert">Position Of Responsibility</h2>
+            <div id="position_of_responsibility"></div>
+            <div class="d-grid mb-3">
+                <button type="button" class="btn btn-secondary" onclick="add_position_of_responsibility_input()"
+                    style="background-color: #cff4fc; color: black; border: none; font-weight: 600;">Add
+                    Position Of Responsibility</button>
+            </div>
+        </div>
+        <!-- experience -->
+        <div id="experience_main_box">
+            <h2 class="alert alert-danger  d-flex justify-content-center fw-bold" role="alert">Experience</h2>
+            <div id="experience">
+
+            </div>
+            <div class="d-grid mb-3">
+                <button type="button" class="btn btn-secondary" onclick="add_experience_input()"
+                    style="background-color: #cff4fc; color: black; border: none; font-weight: 600;">Add
+                    Experience</button>
+            </div>
+        </div>
+        <!-- project -->
+        <div id="projects_main_box">
+            <h2 class="alert alert-danger  d-flex justify-content-center fw-bold" role="alert">Projects</h2>
+            <div id="projects">
+
+            </div>
+            <div class="d-grid">
+                <button type="button" class="btn btn-secondary mb-3" onclick="add_Project_input()"
+                    style="background-color: #cff4fc; color: black; border: none; font-weight: 600;">Add
+                    Project</button>
+            </div>
+        </div>
+
+        <!-- Acquirements -->
+        <div id="Acquirements_main_box">
+            <h2 class="alert alert-danger  d-flex justify-content-center fw-bold" role="alert">Acquirements Or Achievements</h2>
+            <div id="Acquirements"></div>
+            <div class="d-grid mb-3">
+                <button type="button" class="btn btn-secondary" onclick="add_Acquirements_input()"
+                    style="background-color: #cff4fc; color: black; border: none; font-weight: 600;">Add
+                    Acquirements</button>
+            </div>
+        </div>
+
+        <div class="d-grid">
+            <button type="button" class="btn btn-danger" onclick="submit_form()" class="mt-3">Submit</button>
+        </div>
+    </div>
+    <script>
+        var st = `{
+    "success": 1,
+    "Name": "Akshay Singh",
+    "Summary": "Computer Science enthusiast with some Web and Android Development background, and I \ud83d\udc9e\ufe0f to code.",
+    "skills": {
+        "language": [
+            "C (Programming Language)",
+            "C++",
+            "Cascading Style Sheets (CSS)",
+            "HTML",
+            "HTML5",
+            "Java",
+            "JavaScript",
+            "Kotlin"
+        ],
+        "library_and_framework": [
+            "Django",
+            "React.js"
+        ],
+        "other": [
+            "Adobe Photoshop",
+            "Microsoft Office"
+        ]
+    },
+    "Education": [
+        {
+            "Degree": "Bachelor of Technology - BTech(2nd year) , Computer Science",
+            "College": "Dr. A.P.J. Abdul Kalam Technical University (2020 - 2024)"
+        },
+        {
+            "Degree": "Senior Secondary (XII), Mathematics",
+            "College": "Elpis Global School (2018 - 2019)"
+        },
+        {
+            "Degree": "Secondary (X)",
+            "College": "Elpis Global School (2016 - 2017)"
+        }
+    ],
+    "Experience": [
+        {
+            "title": "Software Developer",
+            "company": "REACH Technologies",
+            "start": "8/2022",
+            "end": "Present"
+        },
+        {
+            "title": "Intern",
+            "company": "LetsGrowMore",
+            "start": "9/2021",
+            "end": "9/2021"
+        }
+    ],
+    "Acquirements": ["hack","box","qq","4343","5et543df"],
+    "position_of_responsibility": ["head of acm"],
+    "Projects": [
+        {
+            "name": "E_library_using_django",
+            "description": "It is a fully responsive, fullend website made using Django that has authentication system. Only logined user can upload books and read premium books."
+        },
+        {
+            "name": "Hosting_E_library_Django_Bootstrap",
+            "description": "This project is made using HTML, Python."
+        },
+        {
+            "name": "Notepad_Python_GUI",
+            "description": "This project is made using Python."
+        },
+        {
+            "name": "Bouncing_Ball_GUI_Using_C",
+            "description": "This project is made using C."
+        },
+        {
+            "name": "Insta_Profile_Downloader_Python_GUI",
+            "description": "This project is made using Python."
+        },
+        {
+            "name": "Invoice_system",
+            "description": "This project is made using HTML, Python."
+        }
+    ]
+}`;
+        var obj = JSON.parse(st);
+
+        // render form from JSON obj 
+        window.onload = function () {
+            // name and Summary
+            $("#Name").val(obj["Name"]);
+            $("#Summary").val(obj["Summary"]);
+
+            // skills
+            for (let i in obj["skills"]) {
+                let div_ele = `<div  id="${i}"></div>`
+                document.getElementById("Skills").innerHTML += div_ele;
+                // console.log(i)
+                let label_ele = `<label class="alert alert-danger fs-4 py-1 d-flex justify-content-center fw-bold">${i}</label>`
+                document.getElementById(i).innerHTML += label_ele;
+                let count = 0;
+                for (let x in obj["skills"][i]) {
+                    let element = `<input type="text" class="form-control mb-3 mt-3 ${i}_input" value=${obj["skills"][i][x]}>`
+                    document.getElementById(i).innerHTML += element;
+                    document.getElementById(i).innerHTML += `<button type="button" class="btn btn-primary mb-2" onclick="delete_skills_input('${i}',${count})">Delete Above</button>`
+                    ++count;
+                    // console.log(element)
+                }
+                document.getElementById("Skills").innerHTML += `<div class="d-grid mb-3"><button class="btn btn-secondary" onclick="add_skills_input('${i}')" style="background-color: #cff4fc; color: black; border: none; font-weight: 600;">Add ${i}</button></div>`;
+            }
+            // Education
+            // console.log(obj["Education"])
+            count = 0;
+            for (let i in obj["Education"]) {
+                // let div_ele = `<div id="${i}"></div>`
+                // document.getElementById("Education").innerHTML += div_ele;
+                // console.log(i)
+                // let label_ele = `<div><label class="form-label">${i}</label></div>`
+                // document.getElementById(i).innerHTML += label_ele;
+                // console.log(obj["Education"][i])
+                for (let x in obj["Education"][i]) {
+                    let label_ele = `<p class="form-label ${x}_label h5">${x}</p>`
+                    document.getElementById("Education").innerHTML += label_ele;
+                    let t_var = obj["Education"][i][x]
+                    let element = `<input type="text" class="form-control mb-3 ${x}_input" value="${t_var}">`
+                    document.getElementById("Education").innerHTML += element;
+                    // console.log(element)  
+                }
+                document.getElementById("Education").innerHTML += `<button type="button" class="btn btn-primary mb-2" onclick="delete_Education_input(${count})">Delete Above Education</button>`;
+                ++count;
+            }
+
+            // position_of_responsibility
+            count = 0;
+            position_of_responsibility = obj["position_of_responsibility"]
+            for (var i = 0; i < position_of_responsibility.length; i++) {
+                // console.log(projects[i]["description"])
+                let project_ele = `
+            <p class="form-label name_label h5">Position</p>
+            <input type="text" class="form-control mb-3 position_of_responsibility_name" value="${position_of_responsibility[i]}">
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_position_of_responsibility_input(${count})">Delete Above Position of Responsibility</button>
+        `;
+                document.getElementById("position_of_responsibility").innerHTML += project_ele
+                ++count;
+            }
+
+
+            // Acquirements
+            count = 0;
+            let Acquirements = obj["Acquirements"]
+            for (var i = 0; i < Acquirements.length; i++) {
+                // console.log(projects[i]["description"])
+                let project_ele = `
+            <p class="form-label name_label h5">Acquirement Title</p>
+            <input type="text" class="form-control mb-3 Acquirements_name" value="${Acquirements[i]}">
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_Acquirements_input(${count})">Delete Above Acquirements</button>
+        `;
+                document.getElementById("Acquirements").innerHTML += project_ele
+                ++count;
+            }
+
+            // let obj=JSON.parse(obj)
+            count = 0;
+            projects = obj["Projects"]
+            for (var i = 0; i < projects.length; i++) {
+                // console.log(projects[i]["description"])
+                let project_ele = `
+            <p class="form-label name_label h5">Project Name</p>
+            <input type="text" class="form-control mb-3 project_name" value="${projects[i].name}">
+            <p class="form-label description_label h5">Project Description</p>
+            <input type="text" class="form-control mb-3 project_desc" value="${projects[i].description}">
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_Project_input(${count})">Delete Above Project</button>
+        `
+                document.getElementById("projects").innerHTML += project_ele
+                ++count;
+            }
+
+            let experience = obj["Experience"]
+            // console.log(experience.length)
+            count = 0
+            for (let i = 0; i < experience.length; i++) {
+
+                let experience_ele = `
+            <p class="form-label h5">Title</p>
+            <input type="text" class="form-control mb-3 experience_title" value="${experience[i]["title"]}">
+            <p class="form-label h5">Company</p>
+            <input type="text" class="form-control mb-3 experience_company" value="${experience[i]["company"]}">
+            <p class="form-label h5">Start Date</p>
+            <input type="text" class="form-control mb-3 experience_start" value="${experience[i]["start"]}">
+            <p class="form-label h5">End Date</p>
+            <input type="text" class="form-control mb-3 experience_end" value="${experience[i]["end"]}">
+
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_experience_input(${count})">Delete Above Experience</button>
+        `
+                document.getElementById("experience").innerHTML += experience_ele;
+                ++count;
+            }
+
+        }
+
+        // add skills input box
+        function add_skills_input(temp) {
+            let count = 0;
+            let elements = document.getElementsByClassName(`${temp}_input`);
+            let t_str = "";
+            for (let i = 0; i < elements.length; ++i) {
+                t_str += `<input type="text" class="form-control mb-3 ${temp}_input" value='${elements[i].value}''>`;
+                t_str += `<button type="button" class="btn btn-primary mb-2" onclick="delete_skills_input('${temp}',${count})">Delete Above</button>`
+                ++count
+            }
+            t_str += `<input type="text" class="form-control mb-3 ${temp}_input"}>
+            <button type="button" class="btn btn-primary" onclick="delete_skills_input('${temp}',${count})">Delete Above</button>
+            `
+            document.getElementById(`${temp}`).innerHTML = t_str;
+        }
+        // to delete skills input box 
+        function delete_skills_input(temp, index) {
+            // confirm(temp + String(index));
+            let elements = document.getElementsByClassName(`${temp}_input`);
+            let t_str = "";
+            for (let i = 0, count = 0; i < elements.length; ++i) {
+                if (i == index) {
+                    continue;
+                }
+                t_str += `<input type="text" class="form-control mb-3 ${temp}_input" value='${elements[i].value}'>`;
+                t_str += `<button type="button" class="btn btn-primary mb-2" onclick="delete_skills_input('${temp}',${count})">Delete Above</button>`
+                ++count
+            }
+            document.getElementById(temp).innerHTML = t_str;
+        }
+
+        // to add_position_of_responsibility_input
+        function add_position_of_responsibility_input(){
+            count = 0;
+            let position_of_responsibility = document.getElementsByClassName(`position_of_responsibility_name`);
+            let t_str = ""
+            for (let i = 0; i < position_of_responsibility.length; ++i) {
+                t_str += `
+                <p class="form-label name_label h5">Position</p>
+            <input type="text" class="form-control mb-3 position_of_responsibility_name" value="${position_of_responsibility[i].value}">
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_position_of_responsibility_input(${count})">Delete Above Position of Responsibility</button>
+                `;
+                ++count;
+            }
+            t_str += `
+            <p class="form-label name_label h5">Position</p>
+            <input type="text" class="form-control mb-3 position_of_responsibility_name">
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_position_of_responsibility_input(${count})">Delete Above Position of Responsibility</button>
+            `;
+            document.getElementById("position_of_responsibility").innerHTML = t_str;
+        }
+        // to delete position_of_responsibility 
+        function delete_position_of_responsibility_input(index){
+            count = 0;
+            let position_of_responsibility = document.getElementsByClassName(`position_of_responsibility_name`);
+            let t_str = ""
+            for (let i = 0; i < position_of_responsibility.length; ++i) {
+                if(i==index){
+                    continue;
+                }
+                t_str += `
+                <p class="form-label name_label h5">Position</p>
+            <input type="text" class="form-control mb-3 position_of_responsibility_name" value="${position_of_responsibility[i].value}">
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_position_of_responsibility_input(${count})">Delete Above Position of Responsibility</button>
+                `;
+                ++count;
+            }
+            document.getElementById("position_of_responsibility").innerHTML = t_str;
+        }
+
+        // to add_Education_input
+        function add_Education_input() {
+            count = 0;
+            let deg_input = document.getElementsByClassName(`Degree_input`);
+            let col_input = document.getElementsByClassName(`College_input`);
+            let t_str = ""
+            for (let i = 0; i < deg_input.length; ++i) {
+                t_str += `<p class="form-label Degree_label">Degree</p> 
+            <input type="text" class="form-control mb-3 Degree_input" value="${deg_input[i].value}">
+            <label class="form-label College_label">College</label> 
+            <input type="text" class="form-control mb-3 College_input" value="${col_input[i].value}">`;
+                t_str += `<button type="button" class="btn btn-primary mb-2" onclick="delete_Education_input(${count})">Delete Above Education</button>`;
+                ++count;
+            }
+            t_str += `<p class="form-label Degree_label">Degree</p> 
+            <input type="text" class="form-control mb-3 Degree_input">
+            <label class="form-label College_label">College</label> 
+            <input type="text" class="form-control mb-3 College_input">
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_Education_input(${count})">Delete Above Education</button>`;
+
+            document.getElementById("Education").innerHTML = t_str;
+        }
+        // to delete_Education_input
+        function delete_Education_input(index) {
+            let deg_input = document.getElementsByClassName(`Degree_input`);
+            let col_input = document.getElementsByClassName(`College_input`);
+            let t_str = ""
+            for (let i = 0, count = 0; i < deg_input.length; ++i) {
+                if (i == index) {
+                    continue;
+                }
+                t_str += `<p class="form-label Degree_label">Degree</p> 
+            <input type="text" class="form-control mb-3 Degree_input" value="${deg_input[i].value}">
+            <label class="form-label College_label">College</label> 
+            <input type="text" class="form-control mb-3 College_input" value="${col_input[i].value}">`;
+                t_str += `<button type="button" class="btn btn-primary mb-2" onclick="delete_Education_input(${count})">Delete Above Education</button>`;
+                ++count;
+            }
+            document.getElementById("Education").innerHTML = t_str;
+        }
+
+        // to add_Project_input
+        function add_Project_input() {
+            let count = 0;
+
+            count = 0;
+            let project_name = document.getElementsByClassName(`project_name`);
+            let project_desc = document.getElementsByClassName(`project_desc`);
+            let t_str = ""
+            for (let i = 0; i < project_name.length; ++i) {
+                t_str += `
+            <p class="form-label name_label">Project Name</p>
+            <input type="text" class="form-control mb-3 project_name" value="${project_name[i].value}">
+            <p class="form-label description_label">Project Description</p>
+            <input type="text" class="form-control mb-3 project_desc" value="${project_desc[i].value}">
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_Project_input(${count})">Delete Above Project</button>
+        `;
+                ++count;
+            }
+            t_str += `<p class="form-label name_label">Project Name</p>
+            <input type="text" class="form-control mb-3 project_name">
+            <p class="form-label description_label">Project Description</p>
+            <input type="text" class="form-control mb-3 project_desc">
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_Project_input(${count})">Delete Above Project</button>`;
+
+            document.getElementById("projects").innerHTML = t_str;
+
+        }
+        // to delete_Project_input
+        function delete_Project_input(index) {
+            let project_name = document.getElementsByClassName(`project_name`);
+            let project_desc = document.getElementsByClassName(`project_desc`);
+            let t_str = ""
+            for (let i = 0, count = 0; i < project_name.length; ++i) {
+                if (i == index) {
+                    continue;
+                }
+                t_str += `
+            <p class="form-label name_label">Project Name</p>
+            <input type="text" class="form-control mb-3 project_name" value="${project_name[i].value}">
+            <p class="form-label description_label">Project Description</p>
+            <input type="text" class="form-control mb-3 project_desc" value="${project_desc[i].value}">
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_Project_input(${count})">Delete Above Project</button>
+        `;
+                ++count;
+            }
+            document.getElementById("projects").innerHTML = t_str;
+        }
+        // to add_experience_input
+        function add_experience_input() {
+            count = 0;
+            let experience_title = document.getElementsByClassName(`experience_title`);
+            let experience_company = document.getElementsByClassName(`experience_company`);
+            let experience_start = document.getElementsByClassName(`experience_start`);
+            let experience_end = document.getElementsByClassName(`experience_end`);
+            let t_str = "";
+            for (let i = 0, count = 0; i < experience_title.length; ++i) {
+                t_str += `
+                <p class="form-label">Title</p>
+            <input type="text" class="form-control mb-3 experience_title" value="${experience_title[i].value}">
+            <p class="form-label">Company</p>
+            <input type="text" class="form-control mb-3 experience_company" value="${experience_company[i].value}">
+            <p class="form-label">Start Date</p>
+            <input type="text" class="form-control mb-3 experience_start" value="${experience_start[i].value}">
+            <p class="form-label">End Date</p>
+            <input type="text" class="form-control mb-3 experience_end" value="${experience_end[i].value}">
+
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_experience_input(${count})">Delete Above Experience</button>
+        `;
+                ++count;
+            }
+
+            t_str += `<p class="form-label">Title</p>
+            <input type="text" class="form-control mb-3 experience_title">
+            <p class="form-label">Company</p>
+            <input type="text" class="form-control mb-3 experience_company">
+            <p class="form-label">Start Date</p>
+            <input type="text" class="form-control mb-3 experience_start">
+            <p class="form-label">End Date</p>
+            <input type="text" class="form-control mb-3 experience_end">
+
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_experience_input(${count})">Delete Above Experience</button>`;
+
+            document.getElementById("experience").innerHTML = t_str;
+
+        }
+        // to delete experience
+        function delete_experience_input(index) {
+            let experience_title = document.getElementsByClassName(`experience_title`);
+            let experience_company = document.getElementsByClassName(`experience_company`);
+            let experience_start = document.getElementsByClassName(`experience_start`);
+            let experience_end = document.getElementsByClassName(`experience_end`);
+            let t_str = ""
+            for (let i = 0, count = 0; i < experience_title.length; ++i) {
+                if (i == index) {
+                    continue;
+                }
+                t_str += `
+                <p class="form-label">Title</p>
+            <input type="text" class="form-control mb-3 experience_title" value="${experience_title[i].value}">
+            <p class="form-label">Company</p>
+            <input type="text" class="form-control mb-3 experience_company" value="${experience_company[i].value}">
+            <p class="form-label">Start Date</p>
+            <input type="text" class="form-control mb-3 experience_start" value="${experience_start[i].value}">
+            <p class="form-label">End Date</p>
+            <input type="text" class="form-control mb-3 experience_end" value="${experience_end[i].value}">
+
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_experience_input(${count})">Delete Above Experience</button>
+        `;
+                ++count;
+            }
+            document.getElementById("experience").innerHTML = t_str;
+        }
+
+        // to add_Acquirements
+        function add_Acquirements_input(){
+            let count = 0;
+            let Acquirements = document.getElementsByClassName(`Acquirements_name`);
+            let t_str = ""
+            for (let i = 0; i < Acquirements.length; ++i) {
+                t_str += `
+                <p class="form-label name_label h5">Acquirement Title</p>
+            <input type="text" class="form-control mb-3 Acquirements_name" value="${Acquirements[i].value}">
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_Acquirements_input(${count})">Delete Above Acquirements</button>
+                `;
+                ++count;
+            }
+            t_str += `
+            <p class="form-label name_label h5">Acquirement Title</p>
+            <input type="text" class="form-control mb-3 Acquirements_name">
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_Acquirements_input(${count})">Delete Above Acquirements</button>
+            `;
+            document.getElementById("Acquirements").innerHTML = t_str;
+        }
+        // to delete position_of_responsibility 
+        function delete_Acquirements_input(index){
+            let count = 0;
+            let Acquirements = document.getElementsByClassName(`Acquirements_name`);
+            let t_str = ""
+            for (let i = 0; i < Acquirements.length; ++i) {
+                if(i==index){
+                    continue;
+                }
+                t_str += `
+                <p class="form-label name_label h5">Acquirement Title</p>
+            <input type="text" class="form-control mb-3 Acquirements_name" value="${Acquirements[i].value}">
+            <button type="button" class="btn btn-primary mb-2" onclick="delete_Acquirements_input(${count})">Delete Above Acquirements</button>
+                `;
+                ++count;
+            }
+
+            document.getElementById("Acquirements").innerHTML = t_str;
+        }
+
+
+        function submit_form() {
+            let new_obj = obj;
+            // new_obj.success = 1;
+            // update name and Summary
+            new_obj.Name = document.getElementById("Name").value;
+            new_obj.Summary = document.getElementById("Summary").value;
+            // update skills
+            let t_language = []
+            let t_library_and_framework = []
+            let t_other = []
+            let l_input = document.getElementsByClassName("Languages_input")
+            for (let i = 0; i < l_input.length; ++i) {
+                t_language.push(l_input[i].value)
+            }
+
+            for (let i = 0; i < document.getElementsByClassName("Library And Frameworks_input").length; ++i) {
+                t_library_and_framework.push(document.getElementsByClassName("Library And Frameworks_input")[i].value)
+            }
+            for (let i = 0; i < document.getElementsByClassName("Others_input").length; ++i) {
+                t_other.push(document.getElementsByClassName("Others_input")[i].value)
+            }
+            new_obj.skills["Languages"] = t_language;
+            new_obj.skills["Library And Frameworks"] = t_library_and_framework;
+            new_obj.skills["Others"] = t_other;
+            // update Education
+            let t_Education = []
+            for (let i = 0; i < document.getElementsByClassName("Degree_input").length; ++i) {
+                let temp = {};
+                temp["Degree"] = document.getElementsByClassName("Degree_input")[i].value;
+                temp["College"] = document.getElementsByClassName("Degree_input")[i].value;
+                t_Education.push(temp);
+            }
+            new_obj.Education = t_Education;
+
+            // update position_of_responsibility
+            let por = []
+            for (let i = 0; i < document.getElementsByClassName("position_of_responsibility_name").length; ++i) {
+                por.push(document.getElementsByClassName("position_of_responsibility_name")[i].value);
+            }
+            new_obj.position_of_responsibility = por;
+            
+            // update Acquirements
+            let acq = []
+            for (let i = 0; i < document.getElementsByClassName("Acquirements_name").length; ++i) {
+                acq.push(document.getElementsByClassName("Acquirements_name")[i].value);
+            }
+            new_obj.Acquirements = acq;
+
+            // update experience
+            let t_Experience = [];
+            for (let i = 0; i < document.getElementsByClassName("experience_title").length; ++i) {
+                let temp = {};
+                temp["title"] = document.getElementsByClassName("experience_title")[i].value;
+                temp["company"] = document.getElementsByClassName("experience_company")[i].value;
+                temp["start"] = document.getElementsByClassName("experience_start")[i].value;
+                temp["end"] = document.getElementsByClassName("experience_end")[i].value;
+                t_Experience.push(temp);
+            }
+            new_obj.Experience = t_Experience;
+            // update projects 
+            let Projects = [];
+            for (let i = 0; i < document.getElementsByClassName("project_name").length; ++i) {
+                let temp = {};
+                temp["name"] = document.getElementsByClassName("project_name")[i].value;
+                temp["description"] = document.getElementsByClassName("project_desc")[i].value;
+                Projects.push(temp);
+            }
+            new_obj.Projects = Projects;
+
+            console.log(new_obj);
+        }
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.js"
+        integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

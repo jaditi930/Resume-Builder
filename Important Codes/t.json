@@ -1,0 +1,135 @@
+{
+   "position_groups": [
+      {
+         "profile_positions": [
+            {
+               "title": "Documentation sub head",
+               "date": {
+                  "end": {
+                     "year": null,
+                     "month": null
+                  },
+                  "start": {
+                     "year": 2022,
+                     "month": 1
+                  }
+               },
+               "description": null,
+               "location": "India",
+               "company": "IPEC ACM Student Chapter"
+            }
+         ],
+         "company": {
+            "logo": "https://media-exp1.licdn.com/dms/image/C4E0BAQE5X61LW1ZytA/company-logo_400_400/0/1630998212777?e=1675900800&v=beta&t=KHML1GTHjVUfhrcC5EwbHdLGlDsEjk4YTJCt64idHjQ",
+            "name": "IPEC ACM Student Chapter",
+            "url": "https://www.linkedin.com/company/ipec-acm-chapter/",
+            "employees": {
+               "end": 200,
+               "start": 51
+            }
+         },
+         "date": {
+            "end": {
+               "year": null,
+               "month": null
+            },
+            "start": {
+               "year": 2022,
+               "month": 1
+            }
+         },
+         "company_url": "https://www.linkedin.com/company/ipec-acm-chapter/"
+      }
+   ],
+   "profile_id": "yatin-singhal-838594201",
+   "entity_urn": "ACoAADOFhKwBgyt86z-ujWyjQgnBXWhLH6dXnHA",
+   "certifications": {},
+   "publications": {},
+   "patents": {},
+   "first_name": "Yatin",
+   "influencer": false,
+   "sub_title": "AKTU",
+   "info": "For high-volume use of our LinkedIn API, visit https://iscraper.io or send an email at sales@iscraper.io to discuss the pricing.",
+   "profile_picture": "https://media-exp1.licdn.com/dms/image/C4E03AQEujcNW0YBePA/profile-displayphoto-shrink_400_400/0/1607797085724?e=1673481600&v=beta&t=1b8_O4PsApWNdvTjziAydxyENM9v4xANMMR5rmx4WdU",
+   "awards": {},
+   "last_name": "Singhal",
+   "object_urn": "864388268",
+   "education": [
+      {
+         "field_of_study": "Information Technology",
+         "degree_name": "Bachelor of Technology - BTech",
+         "date": {
+            "end": {
+               "year": 2024,
+               "month": 9
+            },
+            "start": {
+               "year": 2020,
+               "month": 9
+            }
+         },
+         "school": {
+            "logo": "https://media-exp1.licdn.com/dms/image/C4D0BAQEsrn8EiguNYQ/company-logo_400_400/0/1661233032665?e=1675900800&v=beta&t=kLVeGAtZ6kNt6NnkE1PDT5tGIvRi3nJqPjnOkBfEUGc",
+            "name": "Dr. A.P.J. Abdul Kalam Technical University"
+         }
+      },
+      {
+         "field_of_study": "Information Technology",
+         "degree_name": "Bachelor of Technology - BTech",
+         "date": {
+            "end": {
+               "year": 2024,
+               "month": 9
+            },
+            "start": {
+               "year": 2020,
+               "month": 9
+            }
+         },
+         "school": {
+            "logo": "https://media-exp1.licdn.com/dms/image/C510BAQFqLCHmcTMzLw/company-logo_400_400/0/1519868246356?e=1675900800&v=beta&t=L2VnL_Mx10BkuCCSaVg8gBWSANQJl74Qu-miPe0SJVw",
+            "name": "Inderprastha Engineering College"
+         }
+      }
+   ],
+   "skills": [
+      "English",
+      "Engineering",
+      "Communication",
+      "Data Analysis",
+      "C++",
+      "C (Programming Language)",
+      "Documentation",
+      "Microsoft Excel"
+   ],
+   "projects": {},
+   "test_scores": {},
+   "courses": {},
+   "volunteer_experiences": {},
+   "premium": false,
+   "birth_date": null,
+   "organizations": {},
+   "summary": null,
+   "languages": {
+      "profile_languages": {},
+      "primary_locale": {
+         "country": "US",
+         "language": "en"
+      },
+      "supported_locales": [
+         {
+            "country": "US",
+            "language": "en"
+         }
+      ]
+   },
+   "treasury_media": {},
+   "location": {
+      "short": "Delhi",
+      "city": null,
+      "country": "India",
+      "default": "Delhi, India",
+      "state": null
+   },
+   "industry": "Information Technology & Services"
+}
